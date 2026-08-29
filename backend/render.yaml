@@ -1,0 +1,46 @@
+services:
+  - type: web
+    name: academia-ion-andrei-api
+    runtime: docker
+    dockerfilePath: ./Dockerfile
+    dockerContext: .
+    plan: starter
+    healthCheckPath: /actuator/health
+    # Story-urile sunt fisiere pe disc; fara volum persistent se pierd la fiecare deploy.
+    disk:
+      name: uploads
+      mountPath: /app/uploads
+      sizeGB: 5
+    envVars:
+      - key: DATABASE_URL
+        fromDatabase:
+          name: academia-db
+          property: connectionString
+      - key: DATABASE_USER
+        fromDatabase:
+          name: academia-db
+          property: user
+      - key: DATABASE_PASSWORD
+        fromDatabase:
+          name: academia-db
+          property: password
+      - key: JWT_SECRET
+        generateValue: true
+      - key: CORS_ORIGINS
+        value: https://academiaionandrei.ro,https://www.academiaionandrei.ro
+      - key: FRONTEND_URL
+        value: https://academiaionandrei.ro
+      - key: STORAGE_PATH
+        value: /app/uploads/stories
+      - key: JPA_DDL_AUTO
+        value: update
+      - key: MAIL_ENABLED
+        value: "true"
+      # Setate manual din dashboard, nu in acest fisier:
+      #   MAIL_HOST, MAIL_USERNAME, MAIL_PASSWORD, SEED_ADMIN_PASSWORD
+
+databases:
+  - name: academia-db
+    databaseName: academia
+    user: academia
+    plan: basic-256mb
