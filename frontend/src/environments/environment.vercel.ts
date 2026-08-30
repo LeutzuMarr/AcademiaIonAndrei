@@ -12,8 +12,8 @@
  */
 export const environment = {
   production: true,
-  /** Devine '/api' dupa ce adaugi rewrite-ul catre Render in vercel.json. */
-  apiUrl: '',
+  /** Rewrite-ul din vercel.json trimite /api catre backend-ul de pe Render. */
+  apiUrl: '/api',
   googleMapsApiKey: '',
   storageKeys: {
     token: 'aia.token',
