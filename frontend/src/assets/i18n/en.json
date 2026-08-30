@@ -174,7 +174,15 @@
       "terms": "You must accept the terms to create an account.",
       "incomplete": "Incomplete form",
       "checkFields": "Check all highlighted fields."
-    }
+    },
+    "quote1": "A black belt",
+    "quote2": "is a white belt",
+    "quote3": "that never quit.",
+    "motto": "Discipline · Performance · Mindset",
+    "termsAgree": "I agree to the",
+    "termsLink": "terms and conditions",
+    "and": "and the",
+    "privacyLink": "privacy policy"
   },
   "dashboard": {
     "profile": "Profile",

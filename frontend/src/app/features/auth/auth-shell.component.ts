@@ -1,12 +1,13 @@
 import { ChangeDetectionStrategy, Component, input } from '@angular/core';
 import { RouterLink } from '@angular/router';
 import { LogoComponent } from '../../shared/components/logo.component';
+import { TranslatePipe } from '@ngx-translate/core';
 
 /** Layout comun paginilor de autentificare: panou vizual + card de formular. */
 @Component({
   selector: 'aia-auth-shell',
   standalone: true,
-  imports: [RouterLink, LogoComponent],
+  imports: [RouterLink, LogoComponent, TranslatePipe],
   changeDetection: ChangeDetectionStrategy.OnPush,
   template: `
     <div class="grid min-h-[calc(100vh-84px)] lg:grid-cols-2">
@@ -22,12 +23,12 @@ import { LogoComponent } from '../../shared/components/logo.component';
           <a routerLink="/"><aia-logo /></a>
           <div>
             <p class="font-display text-5xl leading-[1.06]">
-              Centura neagra<br />
-              <span style="color: var(--aia-blood)">este o centura alba</span><br />
-              care nu s-a oprit.
+              {{ 'auth.quote1' | translate }}<br />
+              <span style="color: var(--aia-blood)">{{ 'auth.quote2' | translate }}</span><br />
+              {{ 'auth.quote3' | translate }}
             </p>
             <p class="mt-8 text-xs tracking-[0.28em]" style="color: var(--aia-text-muted)">
-              Disciplina &middot; Performanta &middot; Mentalitate
+              {{ 'auth.motto' | translate }}
             </p>
           </div>
         </div>

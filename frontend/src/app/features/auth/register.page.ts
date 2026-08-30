@@ -98,11 +98,13 @@ function passwordsMatch(group: AbstractControl): ValidationErrors | null {
         <label class="flex items-start gap-3 text-xs" [style.color]="'var(--aia-text-muted)'">
           <input type="checkbox" formControlName="terms" class="mt-0.5 accent-[var(--aia-blood)]" />
           <span>
-            Sunt de acord cu
-            <a routerLink="/legal/termeni" class="underline hover:text-[var(--aia-blood-bright)]">termenii si conditiile</a>
-            si cu
-            <a routerLink="/legal/confidentialitate" class="underline hover:text-[var(--aia-blood-bright)]">
-              politica de confidentialitate</a
+            {{ 'auth.termsAgree' | translate }}
+            <a routerLink="/legal/termeni" class="underline hover:text-[var(--aia-cyan)]">
+              {{ 'auth.termsLink' | translate }}</a
+            >
+            {{ 'auth.and' | translate }}
+            <a routerLink="/legal/confidentialitate" class="underline hover:text-[var(--aia-cyan)]">
+              {{ 'auth.privacyLink' | translate }}</a
             >.
           </span>
         </label>

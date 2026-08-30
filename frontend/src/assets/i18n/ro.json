@@ -174,7 +174,15 @@
       "terms": "Acordul este obligatoriu pentru crearea contului.",
       "incomplete": "Formular incomplet",
       "checkFields": "Verifică toate câmpurile marcate."
-    }
+    },
+    "quote1": "Centura neagră",
+    "quote2": "este o centură albă",
+    "quote3": "care nu s-a oprit.",
+    "motto": "Disciplină · Performanță · Mentalitate",
+    "termsAgree": "Sunt de acord cu",
+    "termsLink": "termenii și condițiile",
+    "and": "și cu",
+    "privacyLink": "politica de confidențialitate"
   },
   "dashboard": {
     "profile": "Profil",
