@@ -26,10 +26,20 @@ services:
     region: frankfurt
     healthCheckPath: /actuator/health
     envVars:
-      - key: DATABASE_URL
+      # Trimitem componentele, nu connectionString: acesta vine in forma
+      # "postgresql://..." pe care Spring Boot nu o poate folosi direct.
+      - key: DB_HOST
         fromDatabase:
           name: academia-db
-          property: connectionString
+          property: host
+      - key: DB_PORT
+        fromDatabase:
+          name: academia-db
+          property: port
+      - key: DB_NAME
+        fromDatabase:
+          name: academia-db
+          property: database
       - key: DATABASE_USER
         fromDatabase:
           name: academia-db

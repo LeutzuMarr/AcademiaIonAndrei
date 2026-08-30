@@ -3,8 +3,16 @@ spring:
     name: academia-ion-andrei-api
 
   datasource:
-    # In productie, DATABASE_URL vine de la Render / Railway / RDS.
-    url: ${DATABASE_URL:jdbc:postgresql://localhost:5432/academia}
+    # Render (si multe alte platforme) expun connection string-ul in forma
+    # "postgresql://user:parola@host/baza". Spring Boot nu recunoaste acest
+    # format si nu poate deduce driverul - de aici esecul la pornire cu
+    # "Failed to determine a suitable driver class".
+    #
+    # De aceea construim noi URL-ul JDBC din host / port / nume, care sunt
+    # expuse separat. DATABASE_URL ramane disponibil pentru gazdele care dau
+    # direct un URL JDBC valid (Docker local, RDS).
+    url: ${DATABASE_URL:jdbc:postgresql://${DB_HOST:localhost}:${DB_PORT:5432}/${DB_NAME:academia}}
+    driver-class-name: org.postgresql.Driver
     username: ${DATABASE_USER:academia}
     password: ${DATABASE_PASSWORD:academia}
     hikari:
