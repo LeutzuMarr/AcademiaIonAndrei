@@ -6,7 +6,6 @@ import { ToastService } from '../../core/services/toast.service';
 import { AuthShellComponent } from './auth-shell.component';
 import { PasswordFieldComponent } from './password-field.component';
 import { TranslatePipe } from '@ngx-translate/core';
-import { ApiService } from '../../core/services/api.service';
 
 @Component({
   selector: 'aia-login',
@@ -19,16 +18,6 @@ import { ApiService } from '../../core/services/api.service';
       [title]="'auth.loginTitle' | translate"
       [subtitle]="'auth.loginSubtitle' | translate"
     >
-      @if (!api.available) {
-        <div
-          class="mb-6 rounded-[var(--aia-radius-sm)] border p-4 text-sm leading-relaxed"
-          style="border-color: var(--aia-border-strong); background: var(--aia-bg-elev)"
-        >
-          <strong>Demo static.</strong> Aceasta versiune este gazduita fara backend, deci
-          autentificarea nu functioneaza. Site-ul public este complet functional.
-        </div>
-      }
-
       <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="space-y-5">
         <div>
           <label class="aia-label" for="email">{{ 'auth.email' | translate }}</label>
@@ -69,7 +58,6 @@ import { ApiService } from '../../core/services/api.service';
 })
 export class LoginPage {
   private readonly fb = inject(FormBuilder);
-  readonly api = inject(ApiService);
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   private readonly route = inject(ActivatedRoute);

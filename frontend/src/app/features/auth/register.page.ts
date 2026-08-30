@@ -13,7 +13,6 @@ import { ToastService } from '../../core/services/toast.service';
 import { UtmService } from '../../core/services/utm.service';
 import { AuthShellComponent } from './auth-shell.component';
 import { PasswordFieldComponent } from './password-field.component';
-import { ApiService } from '../../core/services/api.service';
 
 /** Validator la nivel de grup: parolele trebuie sa coincida. */
 function passwordsMatch(group: AbstractControl): ValidationErrors | null {
@@ -33,16 +32,6 @@ function passwordsMatch(group: AbstractControl): ValidationErrors | null {
       [title]="'auth.registerTitle' | translate"
       [subtitle]="'auth.registerSubtitle' | translate"
     >
-      @if (!api.available) {
-        <div
-          class="mb-6 rounded-[var(--aia-radius-sm)] border p-4 text-sm leading-relaxed"
-          style="border-color: var(--aia-border-strong); background: var(--aia-bg-elev)"
-        >
-          <strong>Demo static.</strong> Aceasta versiune este gazduita fara backend, deci
-          autentificarea nu functioneaza. Site-ul public este complet functional.
-        </div>
-      }
-
       <form [formGroup]="form" (ngSubmit)="submit()" novalidate class="space-y-5">
         <div>
           <label class="aia-label" for="name">{{ 'auth.name' | translate }}</label>
@@ -137,7 +126,6 @@ function passwordsMatch(group: AbstractControl): ValidationErrors | null {
 })
 export class RegisterPage {
   private readonly fb = inject(FormBuilder);
-  readonly api = inject(ApiService);
   private readonly auth = inject(AuthService);
   private readonly router = inject(Router);
   private readonly toast = inject(ToastService);
